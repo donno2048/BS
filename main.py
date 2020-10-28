@@ -37,7 +37,6 @@ tones = range(-25, 25)
 sys.stdout.flush()
 transposed_sounds = [pitchshift(sound, n) for n in tones]
 pygame.mixer.init(fps, -16, 1, 2048)
-screen = pygame.display.set_mode((150, 150))
 keys = ['ctrl', 'shift', '<', 'w', 'x', 'c', 'v', 'b', 'q', 's', 'd', 'f', 'g', 'a', 'z', 'e', 'r', 't', '&', 'world 73', '"', "'", '(', '-', 'world 72', '_', 'world 71', 'world 64', 'y', 'u', 'i', 'o', 'p', 'h', 'j', 'k', 'l', 'm', 'n', ',', ';', ':', '!', 'right shift', 'right ctrl', 'left', 'down', 'up', 'right', '',]
 sounds = map(pygame.sndarray.make_sound, transposed_sounds)
 key_sound = dict(zip(keys, sounds))
@@ -50,10 +49,6 @@ while True:
             if (key in key_sound.keys()) and (not is_playing[key]):
                 key_sound[key].play(fade_ms=50)
                 is_playing[key] = True
-            elif event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
-                pygame.display.quit()
-                pygame.quit()
-                sys.exit()
         except: pass
     if key in key_sound.keys(): key_sound[key].fadeout(50)
     is_playing[key] = False
