@@ -37,7 +37,7 @@ tones = range(-25, 25)
 sys.stdout.flush()
 transposed_sounds = [pitchshift(sound, n) for n in tones]
 pygame.mixer.init(fps, -16, 1, 2048)
-keys = ['ctrl', 'shift', '<', 'w', 'x', 'c', 'v', 'b', 'q', 's', 'd', 'f', 'g', 'a', 'z', 'e', 'r', 't', '&', 'world 73', '"', "'", '(', '-', 'world 72', '_', 'world 71', 'world 64', 'y', 'u', 'i', 'o', 'p', 'h', 'j', 'k', 'l', 'm', 'n', ',', ';', ':', '!', 'right shift', 'right ctrl', 'left', 'down', 'up', 'right', '',]
+keys = list('qwertyuioplkjhgfdsazxcvbnm')
 sounds = map(pygame.sndarray.make_sound, transposed_sounds)
 key_sound = dict(zip(keys, sounds))
 is_playing = {k: False for k in keys}
