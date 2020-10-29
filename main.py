@@ -33,22 +33,14 @@ def pitchshift(snd_array, n, window_size=2**13, h=2**11):
     return speedx(stretched[window_size:], factor)
 warnings.simplefilter('ignore')
 fps, sound = wavfile.read('temp.py')
-tones = range(-25, 25)
+keys = list('qwertyuioplkjhgfdsazxcvbnm')
+tones = range(- len(keys) // 2, len(keys) // 2)
 sys.stdout.flush()
 transposed_sounds = [pitchshift(sound, n) for n in tones]
 pygame.mixer.init(fps, -16, 1, 2048)
-keys = list('qwertyuioplkjhgfdsazxcvbnm')
 sounds = map(pygame.sndarray.make_sound, transposed_sounds)
 key_sound = dict(zip(keys, sounds))
-is_playing = {k: False for k in keys}
 while True:
-    event = pygame.event
-    key = keyboard.read_key()
-    if keyboard.KEY_DOWN:
-        try:
-            if (key in key_sound.keys()) and (not is_playing[key]):
-                key_sound[key].play(fade_ms=50)
-                is_playing[key] = True
-        except: pass
+    event, key = pygame.event, keyboard.read_key()
+    if keyboard.KEY_DOWN and key in key_sound.keys(): key_sound[key].play(fade_ms=50)
     if key in key_sound.keys(): key_sound[key].fadeout(50)
-    is_playing[key] = False
