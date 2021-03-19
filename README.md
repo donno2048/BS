@@ -1,13 +1,21 @@
 # backboard
+
 Install with:
+
 ```
 pip install backboard
 ```
+
 Run it with:
+
 ```
-python -m backboard
+backboard
 ```
+
+###### It might take a while to boot up
+
 To change the default keyboard sound setup use:
+
 ```
-python -m backboard -k SETUP
+backboard -k SETUP
 ```
