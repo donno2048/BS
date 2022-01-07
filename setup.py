@@ -10,6 +10,6 @@ setup(
     license='MIT',
     author='Elisha Hollander',
     classifiers=['Programming Language :: Python :: 3'],
-    install_requires=['pygame==1.9.6','keyboard==0.13.5','numpy==1.20.3','scipy==1.6.3'],
+    install_requires=['pygame>=1.9.6','keyboard>=0.13.5','numpy>=1.20.3','scipy>=1.6.3'],
     entry_points={ 'console_scripts': [ 'backboard=backboard.__main__:main' ] }
 )
